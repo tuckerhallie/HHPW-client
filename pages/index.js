@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -15,11 +15,14 @@ function Home() {
       }}
     >
       <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <p> {user.username}</p>
+      <Link href="orders/new" passHref>
+        <Button style={{ backgroundColor: '#023e8a', marginBottom: '30px', marginTop: '20px' }}>Create New Order</Button>
+      </Link>
+      <Link href="orders" passHref>
+        <Button style={{ backgroundColor: '#023e8a', marginBottom: '30px', marginTop: '20px' }}>View All Orders</Button>
+      </Link>
+
     </div>
   );
 }
